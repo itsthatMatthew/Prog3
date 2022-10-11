@@ -1,6 +1,6 @@
 public class Consumer implements Runnable {
-    Fifo fifo_;
-    String str_;
+    private Fifo fifo_;
+    private String str_;
     int n_;
     public Consumer(Fifo f, String s, int n) {
         fifo_ = f;
@@ -12,7 +12,7 @@ public class Consumer implements Runnable {
         try {
             while(true) {
                 String got = fifo_.get();
-                System.out.println(str_ + " consumed " + got + ' ' + System.currentTimeMillis());
+                System.out.println(str_ + " consumed " + got + ' ' + System.currentTimeMillis() % 100000);
                 Thread.sleep(n_);
             }
         } catch (InterruptedException e) {
